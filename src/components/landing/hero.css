@@ -1,0 +1,169 @@
+/* Syne is already loaded via header.css — remove this import if both share a layout */
+/* @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap'); */
+
+/* ─── Shell ─────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #050709;
+}
+
+/* ─── Content layer ─────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 120px 32px 80px;
+  font-family: 'Syne', sans-serif;
+}
+
+/* ─── Kicker ────────────────────────────────────────────────── */
+.hero-kicker {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(79, 142, 255, 0.6);
+  margin-bottom: 36px;
+}
+
+/* ─── Headline ──────────────────────────────────────────────── */
+.hero-h1 {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  color: #e8edf5;
+  margin-bottom: 6px;
+}
+
+.hero-h1 em {
+  font-style: normal;
+  color: rgba(232, 237, 245, 0.22);
+}
+
+/* ─── Divider ───────────────────────────────────────────────── */
+.hero-divider {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(79, 142, 255, 0.38);
+  margin: 28px auto;
+}
+
+/* ─── Body copy ─────────────────────────────────────────────── */
+.hero-p {
+  max-width: 460px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(140, 162, 200, 0.68);
+  margin-bottom: 44px;
+}
+
+/* ─── Actions ───────────────────────────────────────────────── */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-fill,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.25s, color 0.2s, border-color 0.2s;
+}
+
+.btn-fill {
+  color: #fff;
+  padding: 12px 26px;
+  background: linear-gradient(135deg, #4f8eff 0%, #7b5ea7 100%);
+}
+
+.btn-fill:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(79, 142, 255, 0.26);
+}
+
+.btn-fill:active { transform: translateY(0); opacity: 1; }
+
+.btn-ghost {
+  color: rgba(140, 162, 200, 0.6);
+  padding: 11px 24px;
+  background: transparent;
+  border: 1px solid rgba(140, 162, 200, 0.15);
+}
+
+.btn-ghost:hover {
+  color: rgba(200, 215, 240, 0.85);
+  border-color: rgba(140, 162, 200, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active { transform: translateY(0); }
+
+.btn-ico {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-fill:hover .btn-ico,
+.btn-ghost:hover .btn-ico { transform: translateX(3px); }
+
+/* ─── Stats ─────────────────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 64px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-top: 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #e8edf5;
+}
+
+.stat-lbl {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(95, 120, 160, 0.52);
+}

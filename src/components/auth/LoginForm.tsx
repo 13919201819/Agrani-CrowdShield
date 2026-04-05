@@ -1,0 +1,23 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
+export default function LoginForm() {
+  const router = useRouter();
+
+  return (
+    <div className="bg-gray-900 p-8 rounded-xl w-96">
+      <h2 className="text-2xl mb-6">Secure Login</h2>
+
+      <input placeholder="Email" className="w-full mb-3 p-3 bg-black border border-gray-700 rounded" />
+      <input type="password" placeholder="Password" className="w-full mb-6 p-3 bg-black border border-gray-700 rounded" />
+
+      <button
+        onClick={() => router.push("/dashboard")}
+        className="w-full py-3 bg-purple-600 rounded"
+      >
+        Login
+      </button>
+    </div>
+  );
+}

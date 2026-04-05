@@ -1,0 +1,223 @@
+/* Syne is already loaded via header.css — skip re-importing if shared layout */
+/* @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap'); */
+
+/* ─── Shell ─────────────────────────────────────────────────── */
+.footer {
+  background: #050709;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Syne', sans-serif;
+  padding: 60px 40px 32px;
+}
+
+/* ─── Top grid ──────────────────────────────────────────────── */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 860px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 48px 24px 28px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .footer-brand {
+    grid-column: auto;
+  }
+}
+
+/* ─── Brand column ──────────────────────────────────────────── */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  margin-bottom: 18px;
+  user-select: none;
+}
+
+.brand-logo svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cdd6e4;
+}
+
+.brand-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #4f8eff;
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: super;
+}
+
+.brand-desc {
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(130, 155, 195, 0.6);
+  max-width: 240px;
+  margin-bottom: 24px;
+}
+
+/* ─── Social buttons ────────────────────────────────────────── */
+.brand-social {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(130, 155, 195, 0.5);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.social-btn:hover {
+  color: #e8edf5;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.social-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ─── Nav columns ───────────────────────────────────────────── */
+.col-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(79, 142, 255, 0.58);
+  margin-bottom: 20px;
+}
+
+.col-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.col-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: rgba(130, 155, 195, 0.56);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.col-links a:hover {
+  color: #e8edf5;
+}
+
+.link-badge {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4f8eff;
+  background: rgba(79, 142, 255, 0.1);
+  border: 1px solid rgba(79, 142, 255, 0.2);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* ─── Bottom bar ────────────────────────────────────────────── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(100, 125, 165, 0.42);
+}
+
+/* ─── Status pill ───────────────────────────────────────────── */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(56, 189, 120, 0.7);
+  border: 1px solid rgba(56, 189, 120, 0.15);
+  background: rgba(56, 189, 120, 0.05);
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38bd78;
+  box-shadow: 0 0 6px rgba(56, 189, 120, 0.55);
+  animation: status-blink 2s ease-in-out infinite;
+}
+
+@keyframes status-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.28; }
+}
+
+/* ─── Legal links ───────────────────────────────────────────── */
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(100, 125, 165, 0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover {
+  color: rgba(160, 180, 215, 0.72);
+}

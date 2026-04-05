@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap');
+
+/* ─── Theme Tokens ─────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --hbg:              rgba(6, 9, 14, 0.58);
+  --hbg-scrolled:     rgba(5, 7, 12, 0.78);
+  --hborder:          rgba(255, 255, 255, 0.06);
+  --hborder-scrolled: rgba(255, 255, 255, 0.1);
+  --hglint:           rgba(255, 255, 255, 0.14);
+  --accent:           #4f8eff;
+  --accent-dim:       rgba(79, 142, 255, 0.1);
+  --logo-c:           #e8edf5;
+  --logo-svg:         #4f8eff;
+  --dot:              #4f8eff;
+  --nav-c:            rgba(155, 175, 210, 0.62);
+  --nav-hover:        #e8edf5;
+  --nav-hover-bg:     rgba(255, 255, 255, 0.05);
+  --tog-c:            rgba(140, 162, 200, 0.52);
+  --tog-hover:        #e8edf5;
+  --out-c:            rgba(155, 175, 210, 0.42);
+  --out-hover-c:      rgba(200, 215, 240, 0.75);
+  --fill-from:        #4f8eff;
+  --fill-to:          #7b5ea7;
+  --fill-glow:        rgba(79, 142, 255, 0.28);
+}
+
+[data-theme="light"] {
+  --hbg:              rgba(248, 250, 253, 0.72);
+  --hbg-scrolled:     rgba(242, 245, 251, 0.88);
+  --hborder:          rgba(0, 0, 0, 0.07);
+  --hborder-scrolled: rgba(0, 0, 0, 0.12);
+  --hglint:           rgba(255, 255, 255, 0.7);
+  --accent:           #2563eb;
+  --accent-dim:       rgba(37, 99, 235, 0.07);
+  --logo-c:           #0c1526;
+  --logo-svg:         #2563eb;
+  --dot:              #2563eb;
+  --nav-c:            rgba(35, 55, 95, 0.52);
+  --nav-hover:        #0c1526;
+  --nav-hover-bg:     rgba(0, 0, 0, 0.04);
+  --tog-c:            rgba(50, 75, 120, 0.45);
+  --tog-hover:        #0c1526;
+  --out-c:            rgba(35, 55, 100, 0.38);
+  --out-hover-c:      rgba(15, 30, 75, 0.72);
+  --fill-from:        #2563eb;
+  --fill-to:          #7c3aed;
+  --fill-glow:        rgba(37, 99, 235, 0.22);
+}
+
+/* ─── Shell ────────────────────────────────────────────────── */
+.agrani-header {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 6px 0 18px;
+  font-family: 'Syne', sans-serif;
+
+  background: var(--hbg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid var(--hborder);
+  border-radius: 14px;
+  overflow: hidden;
+
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.agrani-header.scrolled {
+  background: var(--hbg-scrolled);
+  border-color: var(--hborder-scrolled);
+}
+
+/* top glint */
+.header-glint {
+  position: absolute;
+  top: 0; left: 20px; right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hglint), transparent);
+  pointer-events: none;
+}
+
+/* ─── Logo ──────────────────────────────────────────────────── */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--logo-svg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-logo:hover .logo-mark {
+  transform: rotate(90deg);
+}
+
+.logo-mark svg {
+  width: 28px;
+  height: 28px;
+}
+
+.logo-text {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--logo-c);
+  transition: color 0.25s;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--dot);
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: super;
+  animation: dot-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.65); }
+}
+
+/* ─── Nav ───────────────────────────────────────────────────── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  position: relative;
+  font-family: 'Syne', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nav-c);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 7px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: var(--nav-hover);
+  background: var(--nav-hover-bg);
+}
+
+.nav-link:hover::after {
+  width: calc(100% - 28px);
+}
+
+/* ─── Actions ───────────────────────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ─── Theme Toggle ──────────────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--tog-c);
+  transition: color 0.2s, background 0.2s;
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle:hover {
+  color: var(--tog-hover);
+  background: var(--accent-dim);
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(30deg);
+}
+
+/* ─── Ghost CTA (Contact) ───────────────────────────────────── */
+.cta-ghost {
+  font-family: 'Syne', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--out-c);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--hborder);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.cta-ghost:hover {
+  color: var(--out-hover-c);
+  border-color: var(--out-hover-c);
+  background: var(--accent-dim);
+}
+
+/* ─── Primary CTA (Get Started) ─────────────────────────────── */
+.cta-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--fill-from) 0%, var(--fill-to) 100%);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.2s;
+}
+
+.cta-primary:hover {
+  box-shadow: 0 0 22px var(--fill-glow);
+  transform: translateY(-1px);
+}
+
+.cta-primary:hover::before {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cta-primary:active {
+  transform: translateY(0);
+}
+
+.cta-arrow {
+  width: 13px;
+  height: 13px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-primary:hover .cta-arrow {
+  transform: translateX(3px);
+}
