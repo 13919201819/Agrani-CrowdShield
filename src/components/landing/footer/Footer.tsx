@@ -1,6 +1,16 @@
 import "./footer.css";
 
-const NAV = {
+
+type NavItem = {
+  label: string;
+  href: string;
+  badge?: string;
+};
+
+type NavGroup = Record<string, NavItem[]>;
+
+// const NAV = {
+const NAV: NavGroup = {
   Product: [
     { label: "Overview",     href: "/overview" },
     { label: "Crowd Shield", href: "/crowd-shield", badge: "New" },
