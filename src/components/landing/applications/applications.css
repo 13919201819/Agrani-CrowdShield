@@ -1,0 +1,147 @@
+/* ─── Section Base ────────────────────────────────────────── */
+.apps-section {
+  background: #050709;
+  padding: 120px 24px;
+  font-family: 'Syne', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.apps-kicker {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(79, 142, 255, 0.55);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.apps-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: -0.03em;
+  color: rgba(220, 230, 248, 0.95);
+}
+
+.apps-title strong {
+  color: #fff;
+  text-shadow: 0 0 30px rgba(79, 142, 255, 0.3);
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
+  gap: 20px;
+}
+
+.app-card.large { grid-column: span 2; }
+.app-card.medium { grid-row: span 2; }
+
+.app-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.app-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(79, 142, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.card-dot {
+  width: 8px;
+  height: 8px;
+  background: #4f8eff;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  box-shadow: 0 0 10px #4f8eff;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(145, 168, 210, 0.7);
+}
+
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(79, 142, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ─── ADDED: Scanning Animation Styles ────────────────────── */
+.card-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4f8eff, transparent);
+  opacity: 0;
+  z-index: 1; /* Sits behind text, above background */
+  pointer-events: none;
+}
+
+.app-card:hover .card-scanline {
+  opacity: 0.6;
+  animation: scanVertical 2s linear infinite;
+}
+
+@keyframes scanVertical {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+/* ────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .apps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .apps-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .app-card.large, .app-card.medium {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .app-card {
+    padding: 32px;
+  }
+}

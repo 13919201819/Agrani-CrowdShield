@@ -25,7 +25,7 @@
   display: block;
 }
 
-/* ─── Content ───────────────────────────────────────────────── */
+/* ─── Content (Updated max-width) ─────────────────────────── */
 .about-content {
   position: relative;
   z-index: 2;
@@ -34,7 +34,8 @@
   align-items: center;
   text-align: center;
   padding: 80px 32px;
-  max-width: 660px;
+  /* Increased to allow the XL text to spread across the screen */
+  max-width: 1200px; 
   width: 100%;
 }
 
@@ -48,18 +49,23 @@
   margin-bottom: 28px;
 }
 
-/* ─── Paragraph ─────────────────────────────────────────────── */
+/* ─── Paragraph (Now Extra Large) ─────────────────────────── */
 .about-p {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.85;
-  color: rgba(145, 168, 210, 0.7);
-  margin-bottom: 40px;
+  /* clamp(min, preferred, max) - scales with viewport width */
+  font-size: clamp(1.8rem, 4.5vw, 4rem); 
+  font-weight: 500;
+  line-height: 1.1; /* Tight line height is key for the "big" look */
+  color: rgba(220, 230, 248, 0.95);
+  margin-bottom: 50px;
+  letter-spacing: -0.03em; /* Tighter tracking for large headlines */
+  text-wrap: balance; /* Helps distribute text evenly across 2 lines */
 }
 
 .about-p strong {
-  font-weight: 600;
-  color: rgba(220, 230, 248, 0.88);
+  font-weight: 700;
+  color: #fff;
+  /* subtle glow to make the white text pop against the radar */
+  text-shadow: 0 0 20px rgba(79, 142, 255, 0.4); 
 }
 
 /* ─── Divider ───────────────────────────────────────────────── */
@@ -112,12 +118,16 @@
   transform: translateX(3px);
 }
 
-/* ─── Responsive ────────────────────────────────────────────── */
+/* ─── Responsive (Modified) ──────────────────────────────── */
 @media (max-width: 600px) {
   .about-content {
     padding: 60px 24px;
+    max-width: 100%; /* Full screen width on mobile */
   }
   .about-p {
-    font-size: 15px;
+    /* Scale the mobile font down to avoid overflowing the screen */
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
   }
 }

@@ -10,18 +10,40 @@
   justify-content: center;
   overflow: hidden;
   background: #050709;
+  position: relative;
+  z-index: 1; /* Base level */
+}
+
+/* This targets the canvas inside the hero */
+.hero-canvas-bg {
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* FIX: Target the Background component directly */
+.hero > :first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* Lowest layer */
+  pointer-events: none; /* Clicks will pass through this layer */
 }
 
 /* ─── Content layer ─────────────────────────────────────────── */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 10; /* High layer to stay above background */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 120px 32px 80px;
   font-family: 'Syne', sans-serif;
+  position: relative; 
+  z-index: 10 !important; /* Forces content to the front */
+  pointer-events: none;    /* Content container passes clicks... */
+  
+  /* Ensure this layer and its children capture clicks */
+  pointer-events: auto; 
 }
 
 /* ─── Kicker ────────────────────────────────────────────────── */
@@ -75,6 +97,11 @@
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  z-index: 20; /* Highest priority for clicks */
+  position: relative;
+  z-index: 20 !important; /* ...but actions MUST capture them */
+  pointer-events: auto !important;
 }
 
 .btn-fill,
@@ -91,6 +118,8 @@
   cursor: pointer;
   border: none;
   transition: opacity 0.2s, transform 0.2s, box-shadow 0.25s, color 0.2s, border-color 0.2s;
+  cursor: pointer !important;
+  pointer-events: all !important;
 }
 
 .btn-fill {
@@ -166,4 +195,22 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(95, 120, 160, 0.52);
+}
+
+
+/* Add this to the bottom of hero.css */
+.hero {
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 10;
+  position: relative;
+}
+
+/* This ensures the buttons are at the very top of the stack */
+.hero-actions a {
+  position: relative;
+  z-index: 999; 
+  pointer-events: auto !important;
 }

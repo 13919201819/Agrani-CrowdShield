@@ -1,12 +1,24 @@
-// import Hero from "../components/landing/Hero";
-import Features from "../components/landing/Features";
-import CTA from "../components/landing/CTA";
+// // import Hero from "../components/landing/Hero";
+// export default function Page() {
+//   return (
+//     <main className="bg-white text-black">
+//       {/* <Hero /> */}
+//     </main>
+//   );
+// }
+
+import Hero from "@/components/landing/Hero";
+import About from "@/components/landing/about/About";
+import Applications from "@/components/landing/applications/Applications";
+import Contact from "@/components/landing/contact/Contact";
+
 export default function Page() {
   return (
-    <main className="bg-white text-black">
-      {/* <Hero /> */}
-      <Features />
-      <CTA />
+    <main>
+      <Hero />
+      <About />
+      <Applications />
+      <Contact />
     </main>
   );
 }
