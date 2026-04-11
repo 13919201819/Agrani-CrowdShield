@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export interface Alert {
+  id: string;
   location: string;
   risk: number;
   density: number;
