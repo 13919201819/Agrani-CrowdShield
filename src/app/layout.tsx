@@ -53,11 +53,54 @@
 // }
 
 
+// import type { Metadata } from "next";
+// import { Geist, Geist_Mono } from "next/font/google";
+// import "./globals.css";
+// import Header from "@/components/landing/header/Header";
+// import Footer from "@/components/landing/footer/Footer";
+
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+// export const metadata: Metadata = {
+//   title: "Agrani Crowdshield",
+//   description: "AI-powered drone surveillance",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="en">
+//       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+//         <Header />
+        
+//         {/* Only the specific page content will be injected here */}
+//         {children}
+
+//         <Footer />
+//       </body>
+//     </html>
+//   );
+// }
+
+
+
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/landing/header/Header";
-import Footer from "@/components/landing/footer/Footer";
+import LayoutWrapper from "@/components/layout/LayoutWrapper"; // Import the wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,13 +124,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        
-        {/* Only the specific page content will be injected here */}
-        {children}
-
-        <Footer />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
+        {/* The wrapper decides what to show based on the URL */}
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );
